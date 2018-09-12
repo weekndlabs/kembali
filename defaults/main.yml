@@ -1,0 +1,19 @@
+---
+# Path where the code must be deployed to
+kembali_deploy_to: "/var/www/my-app"
+
+# Folder name for the releases
+kembali_version_dir: "releases"
+
+# Softlink name for the current release
+kembali_current_dir: "current"
+
+# Remove rolled back release?
+kembali_remove_rolled_back: yes
+
+# Rollback to this release version (previous by default)
+kembali_rollback_to_release: ""
+
+# Sends anonymous stats to the www.kembali.com servers
+# You can disallow it by just setting this parameter to "no" in your playbook
+kembali_allow_anonymous_stats: yes

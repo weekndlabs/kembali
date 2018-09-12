@@ -1,0 +1,17 @@
+---
+- name: KEMBALI | Check BC for early adopters
+  fail:
+    msg: "kembali_custom_tasks_path is not used anymore. Please, check the documentation at https://github.com/kembali/deploy"
+  when: kembali_custom_tasks_path is defined
+
+- include: "{{ kembali_before_setup_tasks_file | default('empty.yml') }}"
+- include: setup.yml
+- include: "{{ kembali_after_setup_tasks_file | default('empty.yml') }}"
+
+- include: "{{ kembali_before_symlink_tasks_file | default('empty.yml') }}"
+- include: symlink.yml
+- include: "{{ kembali_after_symlink_tasks_file | default('empty.yml') }}"
+
+- include: "{{ kembali_before_cleanup_tasks_file | default('empty.yml') }}"
+- include: cleanup.yml
+- include: "{{ kembali_after_cleanup_tasks_file | default('empty.yml') }}"

@@ -1,8 +1,8 @@
 ---
-- name: KEMBALI | Check BC for early adopters
+- name: KEMBALI | Identifikasi awal
   fail:
-    msg: "kembali_custom_tasks_path is not used anymore. Please, check the documentation at https://github.com/kembali/deploy"
-  when: kembali_custom_tasks_path is defined
+    msg: "kembali_custom_tasks_path jika tidak dapat digunakan. Silahkan, check dokumentasi di https://github.com/weekndlabs/kembali"
+  when: kembali_custom_tasks_path teridentidikasi
 
 - include: "{{ kembali_before_setup_tasks_file | default('empty.yml') }}"
 - include: setup.yml

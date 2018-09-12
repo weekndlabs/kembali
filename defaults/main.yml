@@ -1,19 +1,15 @@
 ---
-# Path where the code must be deployed to
+# Path dimana tempat kode harus diletakkan
 kembali_deploy_to: "/var/www/my-app"
 
-# Folder name for the releases
+# Nama folder untuk rilis versi
 kembali_version_dir: "releases"
 
-# Softlink name for the current release
+# Nama softlink untuk rilis saat ini
 kembali_current_dir: "current"
 
-# Remove rolled back release?
+# Menghapus rollback rilis
 kembali_remove_rolled_back: yes
 
-# Rollback to this release version (previous by default)
+# Kembalikan ke versi rilis ini (yang sebelumnya secara default)
 kembali_rollback_to_release: ""
-
-# Sends anonymous stats to the www.kembali.com servers
-# You can disallow it by just setting this parameter to "no" in your playbook
-kembali_allow_anonymous_stats: yes

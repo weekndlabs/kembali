@@ -4,4 +4,4 @@
   vars:
     kembali_deploy_to: "/tmp/my-app.com"
   roles:
-    - { role: local-kembali }
+    - local-kembali

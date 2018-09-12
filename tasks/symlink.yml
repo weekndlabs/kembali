@@ -1,5 +1,5 @@
 ---
-- name: KEMBALI | Change symlink from current release to a previous one
+- name: KEMBALI | Mengubah symlink dari rilis saat ini ke yang sebelumnya
   file:
     state: link
     path: "{{ kembali_deploy_to }}/{{ kembali_current_dir }}"

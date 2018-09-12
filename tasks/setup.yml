@@ -1,18 +1,18 @@
 ---
-- name: KEMBALI | Get releases path
+- name: KEMBALI | Mendapatkan path rilis
   command: echo "{{ kembali_deploy_to }}/{{ kembali_version_dir }}"
   register: kembali_releases_path
 
-- name: KEMBALI | Get number of releases
+- name: KEMBALI | Mendapatkan num serial untuk rilis
   shell: echo `ls -1t {{ kembali_releases_path.stdout }} | wc -l`
   register: kembali_versions_count
 
-- name: KEMBALI | Check if there is more than one release
+- name: KEMBALI | Memeriksa apakah ada lebih dari saru rilis
   fail:
-    msg: "Could not roll back the code because there is no prior release"
+    msg: "Tidak dapat mengembalikan kode karena tidak ada rilis sebelumnya"
   when: kembali_versions_count.stdout|int <= 1
 
-- name: KEMBALI | Get current release version
+- name: KEMBALI | Mendapatkan versi rilis saat ini
   shell: echo `ls -1t {{ kembali_releases_path.stdout }} | head -n 1`
   register: kembali_current_release_version
 
@@ -21,19 +21,19 @@
   register: stat_rollback_release_version
   when: kembali_rollback_to_release != ""
 
-- name: KEMBALI | Check that the provided rollback release exists
+- name: KEMBALI | Memeriksa apakah rilis rollback tersedia
   fail:
-    msg: "Specified rollback version does not exist"
+    msg: "Versi rollback tidak ada"
   when: kembali_rollback_to_release != "" and (stat_rollback_release_version.stat.exists is not defined or stat_rollback_release_version.stat.isdir == False)
 
-- name: KEMBALI | Get previous releases version
+- name: KEMBALI | Mendapatkan versi rilis sebelumnya
   shell: echo `ls -1t {{ kembali_releases_path.stdout }} | head -n 2 | tail -n 1`
   register: kembali_previous_release_version
 
-- name: KEMBALI | Get rollback release version
+- name: KEMBALI | Mendapatkan versi rilis rollback
   set_fact:
     kembali_rollback_release_version: "{{ kembali_rollback_to_release if kembali_rollback_to_release != '' else kembali_previous_release_version.stdout }}"
 
-- name: KEMBALI | Get release path
+- name: KEMBALI | Mendapatkan path rilis
   command: echo "{{ kembali_releases_path.stdout }}/{{ kembali_rollback_release_version }}"
   register: kembali_release_path

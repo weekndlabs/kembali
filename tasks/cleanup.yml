@@ -1,5 +1,5 @@
 ---
-- name: KEMBALI | Remove rolled back version
+- name: KEMBALI | Hapus versi rollback
   file:
     state: absent
     path: "{{ kembali_releases_path.stdout }}/{{ kembali_current_release_version.stdout }}"

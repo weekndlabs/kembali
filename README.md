@@ -27,7 +27,7 @@ Agar dapat rollback dengan role **kembali**, Anda perlu mengatur deploy dan menj
 ```
 ansible-playbook -i hosts rollback-project.yml
 ```
-If you try to rollback with zero or one releases deployed, an error will be raised and no actions performed.
+
 
 Variables
 ---------
